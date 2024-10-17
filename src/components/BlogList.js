@@ -36,7 +36,12 @@ const BlogList = () => {
 
     return (
         <div className="container my-4">
-            <h2 className="text-center mb-4" style={{ fontWeight: 'bold', color: '#333' }}>Posts</h2>
+            <h2 className="text-center mb-4">Blog Posts</h2>
+            <div className="text-center mb-4">
+                <Link to="/create">
+                    <button className="btn btn-primary">Create Post</button>
+                </Link>
+            </div>
             {posts.length === 0 ? (
                 <p className="text-center">No posts available.</p>
             ) : (
