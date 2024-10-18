@@ -69,7 +69,14 @@ const BlogList = () => {
                                 <h5 className="card-title text-dark font-weight-bold" style={{ fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" }}>
                                     {post.title}
                                 </h5>
-                                <p className="card-text">{post.content}</p>
+                                <p className="card-text">
+                                    {post.content.split('\n').map((line, index) => (
+                                        <React.Fragment key={index}>
+                                            {line.trim() && line}
+                                            {index < post.content.split('\n').length - 1 && <br />}
+                                        </React.Fragment>
+                                    ))}
+                                </p>
                                 <p className="card-text text-muted">
                                     - {post.author}, {formatDate(post.timestamp)}
                                 </p>

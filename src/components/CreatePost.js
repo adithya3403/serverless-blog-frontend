@@ -91,8 +91,13 @@ const CreatePost = () => {
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
                         required
-                        rows="5"
-                        style={{ border: '1px solid #ddd', borderRadius: '4px' }}
+                        rows="6"
+                        style={{
+                            border: '1px solid #ccc',
+                            borderRadius: '4px',
+                            backgroundColor: '#f9f9f9'
+                        }}
+                        placeholder="Write your content here..."
                     ></textarea>
                 </div>
                 <div className="mb-3">
