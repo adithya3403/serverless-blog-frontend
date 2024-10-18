@@ -2,4 +2,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Deployment
 
-See the section about [deployment](https://main.d5u9j9smodhn2.amplifyapp.com/) for more information.
+See the section about [deployment](https://master.d318b2wvvnl3zm.amplifyapp.com/) for more information.
