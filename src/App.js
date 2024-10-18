@@ -10,9 +10,10 @@ function App() {
     return (
         <Router>
             <div className="App">
-                <header className="bg-gray-100 py-5 shadow mb-8">
-                    <div className="container mx-auto text-center">
-                        <h1 className="text-4xl font-bold text-gray-800">BlogStack</h1>
+                <header className="py-3 mb-4 rounded" style={{ backgroundColor: '#cfe7ff' }}>
+                    <div className="container text-center">
+                        <h1 className="display-3 font-weight-bold text-dark">BlogStack</h1>
+                        <p className="lead text-muted">Incididunt ex id nulla exercitation adipisicing minim ullamco</p>
                     </div>
                 </header>
                 <div className="container mx-auto">

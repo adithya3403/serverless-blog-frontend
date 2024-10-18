@@ -8,7 +8,7 @@ body {
 }
 
 .App {
-    max-width: 800px; /* Centering content */
+    max-width: 1250px; /* Centering content */
     margin: auto; /* Center the app */
 }
 
