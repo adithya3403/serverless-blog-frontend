@@ -1,0 +1,57 @@
+.modal-header {
+    position: relative;
+    padding-right: 40px; /* Make space for the close button */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.modal-header > div {
+    flex-grow: 1;
+}
+
+.modal-title {
+    margin-bottom: 0; /* Remove bottom margin from title */
+}
+
+.text-muted {
+    font-size: 0.875rem;
+    margin-top: 0.25rem; /* Add a small top margin to separate from title */
+    margin-bottom: 0;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #dc3545; /* Red color for the cross */
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #dc3545; /* Keep the same red color on hover and focus */
+    background-color: transparent; /* Ensure no background color appears */
+    outline: none; /* Remove the focus outline */
+}
+
+.modal-header .close {
+    outline: none;
+    border: none;
+    background: none;
+    font-size: 1.5rem;
+    padding: 0;
+    margin: -1rem -1rem -1rem auto;
+}
+
+.modal-header .close:hover {
+    color: #dc3545;
+}
+
+.comment {
+    border-left: 2px solid #dee2e6;
+    padding-left: 1rem;
+}

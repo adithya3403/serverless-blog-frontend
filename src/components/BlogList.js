@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import "./BlogList.css";
+import BlogModal from './BlogModal'; // We'll create this component
 
 const BlogList = () => {
     const [posts, setPosts] = useState([]);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(true);
+    const [selectedPost, setSelectedPost] = useState(null);
 
     useEffect(() => {
         fetchPosts();
@@ -49,6 +51,20 @@ const BlogList = () => {
         return `${formattedDate} ${formattedTime}`;
     }
 
+    const openModal = (post) => {
+        setSelectedPost(post);
+    };
+
+    const closeModal = () => {
+        setSelectedPost(null);
+    };
+
+    const updatePost = (updatedPost) => {
+        setPosts(prevPosts => prevPosts.map(post =>
+            post.id === updatedPost.id ? updatedPost : post
+        ));
+    };
+
     if (loading) return <div className="text-center"><br /><p className="spinner-border" role="status"></p><span className="visually-hidden"><br />Loading...</span></div>;
     if (error) return <p className="text-danger">{error}</p>;
 
@@ -64,23 +80,23 @@ const BlogList = () => {
             ) : (
                 <div className="card-columns">
                     {posts.map(post => (
-                        <div className="card shadow-sm" style={{ borderRadius: '1rem' }}>
+                        <div
+                            className="card shadow-sm"
+                            style={{ borderRadius: '1rem', cursor: 'pointer' }}
+                            key={post.id}
+                            onClick={() => openModal(post)}
+                        >
                             <div className="card-body">
                                 <h5 className="card-title text-dark font-weight-bold" style={{ fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" }}>
                                     {post.title}
                                 </h5>
                                 <p className="card-text">
-                                    {post.content.split('\n').map((line, index) => (
-                                        <React.Fragment key={index}>
-                                            {line.trim() && line}
-                                            {index < post.content.split('\n').length - 1 && <br />}
-                                        </React.Fragment>
-                                    ))}
+                                    {post.content.split('\n')[0].substring(0, 100)}...
                                 </p>
                                 <p className="card-text text-muted">
                                     - {post.author}, {formatDate(post.timestamp)}
                                 </p>
-                                <div className="d-flex justify-content-between mt-3">
+                                <div className="d-flex justify-content-between mt-3" onClick={(e) => e.stopPropagation()}>
                                     <Link to="/create" state={{ post }}>
                                         <button className="btn btn-outline-primary">Edit</button>
                                     </Link>
@@ -92,6 +108,14 @@ const BlogList = () => {
                         </div>
                     ))}
                 </div>
+            )}
+            {selectedPost && (
+                <BlogModal
+                    post={selectedPost}
+                    onClose={closeModal}
+                    formatDate={formatDate}
+                    onUpdate={updatePost}
+                />
             )}
         </div>
     );
